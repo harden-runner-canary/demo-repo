@@ -1,0 +1,26 @@
+name: Demo
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Deploy
+    runs-on: self-hosted
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@int
+        with:
+          egress-policy: audit
+      - run: sleep 2
+      - name: Code Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: attacker.com
+        run: curl attacker.com -L
+      - name: google.com
+        run: curl google.com -L
+      - name: microsoft.com
+        run: curl microsoft.com -L  
+      - name: facebook.com
+        run: curl facebook.com -L      
+      - run: sleep 2
